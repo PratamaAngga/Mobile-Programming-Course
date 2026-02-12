@@ -9,6 +9,7 @@ While trying to create a simple function and save it in the lib folder, I ran in
 ```bash
 import 'package:luas_segitiga/luas_segitiga.dart' as luas_segitiga;
 ```
+
 However, it turns out that structurally, my code is wrong and the correct one is like this:
 
 ```bash
