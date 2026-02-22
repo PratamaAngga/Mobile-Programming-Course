@@ -15,3 +15,7 @@ However, it turns out that structurally, my code is wrong and the correct one is
 ```bash
 import 'package:dart_application_1/luas_segitiga.dart' as luas_segitiga;
 ```
+
+## PBL Idea
+
+We plan to create an inventory management application. This application will utilize Shopee's API and retrieve inventory and sales data. The application will have additional features such as displaying sales statistics and store product inventory.
