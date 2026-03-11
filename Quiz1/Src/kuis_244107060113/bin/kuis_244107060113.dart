@@ -1,3 +1,5 @@
+import 'package:kuis_244107060113/diskon.dart' as diskon;
+
 void main() {
   // ── Identitas ─────────────────────────────────────────────
   String nama = 'Pratama Angga Saputra';
@@ -19,5 +21,5 @@ void main() {
   daftarHarga.add(nilaiUnikNIM);
 
   // ── Hitung total ──────────────────────────────────────────
-  double totalAwal = hitungTotal(daftarHarga);
+  double totalAwal = diskon.hitungTotal(daftarHarga);
 }

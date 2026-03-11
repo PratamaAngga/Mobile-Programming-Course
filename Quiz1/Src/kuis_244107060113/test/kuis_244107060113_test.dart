@@ -1,4 +1,4 @@
-import 'package:kuis_244107060113/kuis_244107060113.dart';
+import 'package:kuis_244107060113/diskon.dart';
 import 'package:test/test.dart';
 
 void main() {
