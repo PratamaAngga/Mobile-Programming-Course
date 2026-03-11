@@ -5,7 +5,7 @@ void main() {
   String nama = 'Pratama Angga Saputra';
   String nim  = '244107060113';
 
-  // 3 digit terakhir NIM → 113
+  // 3 digit terakhir NIM
   double nilaiUnikNIM = 113.0;
 
   // == Daftar harga barang (minimal 5 elemen) ================
@@ -23,7 +23,7 @@ void main() {
   // == Hitung total ===========================
   double totalAwal = diskon.hitungTotal(daftarHarga);
 
-  // ── Logika diskon (control flow sesuai soal) ──────────────
+  // === Logika diskon (control flow) ==============
   double persen;
   if (totalAwal > 200000) {
     persen = 0.10;
@@ -36,6 +36,18 @@ void main() {
   double besarDiskon = totalAwal * persen;
   double totalAkhir  = totalAwal - besarDiskon;
 
-  // ── Null safety: String? untuk keterangan diskon ──────────
+  // == Null safety: String? untuk keterangan diskon =======
   String? pesanDiskon = diskon.getPesanDiskon(persen);
+
+  // == Tampilkan hasil ============================
+  diskon.tampilkanHasil(
+    nama        : nama,
+    nim         : nim,
+    daftarHarga : daftarHarga,
+    totalAwal   : totalAwal,
+    besarDiskon : besarDiskon,
+    totalAkhir  : totalAkhir,
+    persen      : persen,
+    pesanDiskon : pesanDiskon,
+  );
 }

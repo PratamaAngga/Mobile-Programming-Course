@@ -17,3 +17,34 @@ String? getPesanDiskon(double persen) {
     return 'Belum ada diskon. Belanja lebih banyak untuk dapat diskon!';
   }
 }
+
+/// Menampilkan seluruh hasil
+void tampilkanHasil({
+  required String nama,
+  required String nim,
+  required List<double> daftarHarga,
+  required double totalAwal,
+  required double besarDiskon,
+  required double totalAkhir,
+  required double persen,
+  required String? pesanDiskon,
+}) {
+  print('============================================');
+  print('   SISTEM PENGOLAH DISKON TOKO');
+  print('============================================');
+  print('Nama      : $nama');
+  print('NIM       : $nim');
+  print('--------------------------------------------');
+  print('Daftar Harga Barang:');
+  for (int i = 0; i < daftarHarga.length; i++) {
+    print('  Barang ${i + 1}  : Rp${daftarHarga[i].toStringAsFixed(0)}');
+  }
+  print('--------------------------------------------');
+  print('Total Awal    : Rp${totalAwal.toStringAsFixed(0)}');
+  print('Besar Diskon  : Rp${besarDiskon.toStringAsFixed(0)} (${(persen * 100).toStringAsFixed(0)}%)');
+  print('Total Akhir   : Rp${totalAkhir.toStringAsFixed(0)}');
+  print('--------------------------------------------');
+  // Operator ! dipakai karena pesanDiskon sudah pasti terisi di sini
+  print('Keterangan    : ${pesanDiskon!}');
+  print('============================================');
+}
