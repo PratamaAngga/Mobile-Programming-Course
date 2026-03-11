@@ -16,4 +16,4 @@ My NIM, especially the last three digits, affects the discount calculation. Ther
 
 ## Documentation - Result/Output Discount Calculator System
 
-![Output](http://github.com/PratamaAngga/Tugas-Jobhseet-3/blob/main/Docs/Output%201.jpg)
+![Output](https://github.com/PratamaAngga/Mobile-Programming-Course/blob/main/Quiz1/Docs/Hasil%20atau%20Output.jpg)
