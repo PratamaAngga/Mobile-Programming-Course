@@ -1,0 +1,1 @@
+There is a “docs” folder for storing step-by-step screenshots of the process and results. There is also a ‘Src’ folder where the code is located. Each project folder in “Src” already has its own README file explaining the respective project.
