@@ -1,16 +1,29 @@
 # basic_layout_flutter
 
-A new Flutter project.
+Working on the Codelabs exercises, Lab Assignment 1, Question 2
 
-## Getting Started
+Some results from each practice step
+![Screenshot kode main](../../Docs/basic_layout_flutter/flutter_06.png)
+Aligning, Sizing, and Packing Widgets
 
-This project is a starting point for a Flutter application.
+![Screenshot kode main](../../Docs/basic_layout_flutter/flutter_07.png)
+Nesting Rows and Columns
 
-A few resources to get you started if this is your first Flutter project:
+![Screenshot kode main](../../Docs/basic_layout_flutter/flutter_08.png)
+Layout Container
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![Screenshot kode main](../../Docs/basic_layout_flutter/flutter_09.png)
+Layout Gridview
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot kode main](../../Docs/basic_layout_flutter/flutter_10.png)
+Layout Gridview List
+
+![Screenshot kode main](../../Docs/basic_layout_flutter/flutter_11.png)
+![Screenshot kode main](../../Docs/basic_layout_flutter/flutter_12.png)
+Layout Listview
+
+![Screenshot kode main](../../Docs/basic_layout_flutter/flutter_13.png)
+![Screenshot kode main](../../Docs/basic_layout_flutter/flutter_14.png)
+![Screenshot kode main](../../Docs/basic_layout_flutter/flutter_15.png)
+![Screenshot kode main](../../Docs/basic_layout_flutter/flutter_16.png)
+Card and Stack
