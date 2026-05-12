@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
   - create the main layout of the app (only the UI)
   - Login to your firebase account
   - create a new project
+  - let's add the firebase dependencies to our flutter app
 */
 
 class HomePage extends StatefulWidget {
@@ -89,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
             style: TextStyle(color: Colors.blue),
           ),
           const SizedBox(height: 88.0),
-          Container(
+          SizedBox(
             width: double.infinity,
             child: RawMaterialButton(
               onPressed: () {},

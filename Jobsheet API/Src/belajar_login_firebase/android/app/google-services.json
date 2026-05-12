@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "69288165291",
+    "project_id": "flutter-login-d90bb",
+    "storage_bucket": "flutter-login-d90bb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69288165291:android:e69bc7cc480ffcd5145cee",
+        "android_client_info": {
+          "package_name": "com.example.belajar_login_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnMKOloMAbMVFmCwSq1PRyzEecfVdpA6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
