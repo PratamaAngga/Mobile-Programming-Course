@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // wajib ada sebelum Firebase init
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -24,10 +26,11 @@ class MyApp extends StatelessWidget {
   - let's add the firebase dependencies to our flutter app
   - initialize firebase in our app
   - create a login function
+  - create a new user inside firebase console and test the app
 */
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -38,6 +41,7 @@ class _HomePageState extends State<HomePage> {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
     return firebaseApp;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,74 +87,114 @@ class _LoginScreenState extends State<LoginScreen> {
     }
     return user;
   }
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose(); // jangan lupa dispose!
+    _passwordController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "MyApp Tittle",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 28.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const Text(
-            "Login to Your App",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 44.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 44.0),
-          const TextField(
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              hintText: "User Email",
-              prefixIcon: Icon(Icons.mail_outline, color: Colors.black),
-            ),
-          ),
-          const SizedBox(height: 26.0),
-          const TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-              hintText: "User Password",
-              prefixIcon: Icon(Icons.lock_outline, color: Colors.black),
-            ),
-          ),
-          const SizedBox(height: 12.0),
-          const Text(
-            "Don't Remember Password?",
-            style: TextStyle(color: Colors.blue),
-          ),
-          const SizedBox(height: 88.0),
-          SizedBox(
-            width: double.infinity,
-            child: RawMaterialButton(
-              onPressed: () {},
-              fillColor: Colors.blue,
-              elevation: 0.0,
-              padding: const EdgeInsets.symmetric(vertical: 20.0),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "MyApp Tittle",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
               ),
-              child: Text(
-                "Login",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
+            ),
+            const Text(
+              "Login to Your App",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 44.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 44.0),
+            TextField(
+              controller: _emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(
+                hintText: "User Email",
+                prefixIcon: Icon(Icons.mail_outline, color: Colors.black),
+              ),
+            ),
+            const SizedBox(height: 26.0),
+            TextField(
+              controller: _passwordController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                hintText: "User Password",
+                prefixIcon: Icon(Icons.lock_outline, color: Colors.black),
+              ),
+            ),
+            const SizedBox(height: 12.0),
+            const Text(
+              "Don't Remember Password?",
+              style: TextStyle(color: Colors.blue),
+            ),
+            const SizedBox(height: 88.0),
+            SizedBox(
+              width: double.infinity,
+              child: RawMaterialButton(
+                onPressed: () async {
+                  User? user = await loginUsingEmailPassword(
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                    context: context,
+                  );
+                  print(user);
+                  if (user != null) {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => const ProfileScreen(),
+                      ),
+                    );
+                  }
+                },
+                fillColor: Colors.blue,
+                elevation: 0.0,
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: const Text(
+                  "Login",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
+    );
+  }
+}
+
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Profile')),
+      body: const Center(child: Text('Welcome to your profile')),
     );
   }
 }
