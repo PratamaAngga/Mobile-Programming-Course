@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,6 +22,8 @@ class MyApp extends StatelessWidget {
   - Login to your firebase account
   - create a new project
   - let's add the firebase dependencies to our flutter app
+  - initialize firebase in our app
+  - create a login function
 */
 
 class HomePage extends StatefulWidget {
@@ -30,9 +34,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Future<FirebaseApp> _initializeFirebase() async {
+    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    return firebaseApp;
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: LoginScreen());
+    return Scaffold(
+      body: FutureBuilder(
+        future: _initializeFirebase(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return const LoginScreen();
+          }
+          return const Center(child: CircularProgressIndicator());
+        },
+      ),
+    );
   }
 }
 
@@ -44,6 +62,27 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  static Future<User?> loginUsingEmailPassword({
+    required String email,
+    required String password,
+    required BuildContext context,
+  }) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      user = userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "user-not-found") {
+        print("No user found for that email");
+      }
+    }
+    return user;
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
