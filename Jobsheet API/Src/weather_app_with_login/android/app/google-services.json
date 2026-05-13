@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1051878920808",
+    "project_id": "weather-login-cefd3",
+    "storage_bucket": "weather-login-cefd3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051878920808:android:005885afe8316b267ea1dd",
+        "android_client_info": {
+          "package_name": "com.example.weather_app_with_login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwFJQl87lTLbbVnpe2Bnr5QuLJlWRPQ_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
